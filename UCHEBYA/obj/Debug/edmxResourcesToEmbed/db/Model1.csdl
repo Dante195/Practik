@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AppPractikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AppPractikEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Client" EntityType="AppPractikModel.Client" />
+    <EntitySet Name="History" EntityType="AppPractikModel.History" />
+    <EntitySet Name="NumberProducts" EntityType="AppPractikModel.NumberProducts" />
+    <EntitySet Name="Products" EntityType="AppPractikModel.Products" />
+    <EntitySet Name="Role" EntityType="AppPractikModel.Role" />
+    <EntitySet Name="Status" EntityType="AppPractikModel.Status" />
+    <EntitySet Name="sysdiagrams" EntityType="AppPractikModel.sysdiagrams" />
+    <EntitySet Name="TileProducts" EntityType="AppPractikModel.TileProducts" />
+    <EntitySet Name="User" EntityType="AppPractikModel.User" />
+    <EntitySet Name="Wallpaper" EntityType="AppPractikModel.Wallpaper" />
+    <EntitySet Name="WoodProducts" EntityType="AppPractikModel.WoodProducts" />
+    <AssociationSet Name="FK_Client_NumberProducts" Association="AppPractikModel.FK_Client_NumberProducts">
+      <End Role="NumberProducts" EntitySet="NumberProducts" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Products" Association="AppPractikModel.FK_Client_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_TileProducts" Association="AppPractikModel.FK_Client_TileProducts">
+      <End Role="TileProducts" EntitySet="TileProducts" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_Wallpaper" Association="AppPractikModel.FK_Client_Wallpaper">
+      <End Role="Wallpaper" EntitySet="Wallpaper" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Client_WoodProducts1" Association="AppPractikModel.FK_Client_WoodProducts1">
+      <End Role="WoodProducts" EntitySet="WoodProducts" />
+      <End Role="Client" EntitySet="Client" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Client" Association="AppPractikModel.FK_History_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_History_Status" Association="AppPractikModel.FK_History_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="History" EntitySet="History" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role" Association="AppPractikModel.FK_User_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdWallpaper" Type="Int32" Nullable="false" />
+    <Property Name="IdWoodProducts" Type="Int32" Nullable="false" />
+    <Property Name="IdTileProducts" Type="Int32" Nullable="false" />
+    <Property Name="IdProducts" Type="Int32" Nullable="false" />
+    <Property Name="IdNumberProducts" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="NumberProducts" Relationship="AppPractikModel.FK_Client_NumberProducts" FromRole="Client" ToRole="NumberProducts" />
+    <NavigationProperty Name="Products" Relationship="AppPractikModel.FK_Client_Products" FromRole="Client" ToRole="Products" />
+    <NavigationProperty Name="TileProducts" Relationship="AppPractikModel.FK_Client_TileProducts" FromRole="Client" ToRole="TileProducts" />
+    <NavigationProperty Name="Wallpaper" Relationship="AppPractikModel.FK_Client_Wallpaper" FromRole="Client" ToRole="Wallpaper" />
+    <NavigationProperty Name="WoodProducts" Relationship="AppPractikModel.FK_Client_WoodProducts1" FromRole="Client" ToRole="WoodProducts" />
+    <NavigationProperty Name="History" Relationship="AppPractikModel.FK_History_Client" FromRole="Client" ToRole="History" />
+  </EntityType>
+  <EntityType Name="History">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdClient" Type="Int32" Nullable="false" />
+    <Property Name="DataEvent" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdStatus" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="AppPractikModel.FK_History_Client" FromRole="History" ToRole="Client" />
+    <NavigationProperty Name="Status" Relationship="AppPractikModel.FK_History_Status" FromRole="History" ToRole="Status" />
+  </EntityType>
+  <EntityType Name="NumberProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="AppPractikModel.FK_Client_NumberProducts" FromRole="NumberProducts" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Client" Relationship="AppPractikModel.FK_Client_Products" FromRole="Products" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="AppPractikModel.FK_User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="History" Relationship="AppPractikModel.FK_History_Status" FromRole="Status" ToRole="History" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TileProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSize" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfProducts" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="Client" Relationship="AppPractikModel.FK_Client_TileProducts" FromRole="TileProducts" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ligin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IdRole" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="AppPractikModel.FK_User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Wallpaper">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSize" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfProducts" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="Client" Relationship="AppPractikModel.FK_Client_Wallpaper" FromRole="Wallpaper" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="WoodProducts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductSize" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfProducts" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="Client" Relationship="AppPractikModel.FK_Client_WoodProducts1" FromRole="WoodProducts" ToRole="Client" />
+  </EntityType>
+  <Association Name="FK_Client_NumberProducts">
+    <End Type="AppPractikModel.NumberProducts" Role="NumberProducts" Multiplicity="1" />
+    <End Type="AppPractikModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NumberProducts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="IdNumberProducts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Products">
+    <End Type="AppPractikModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="AppPractikModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="IdProducts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_TileProducts">
+    <End Type="AppPractikModel.TileProducts" Role="TileProducts" Multiplicity="1" />
+    <End Type="AppPractikModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TileProducts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="IdTileProducts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_Wallpaper">
+    <End Type="AppPractikModel.Wallpaper" Role="Wallpaper" Multiplicity="1" />
+    <End Type="AppPractikModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Wallpaper">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="IdWallpaper" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Client_WoodProducts1">
+    <End Type="AppPractikModel.WoodProducts" Role="WoodProducts" Multiplicity="1" />
+    <End Type="AppPractikModel.Client" Role="Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WoodProducts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="IdWoodProducts" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Client">
+    <End Type="AppPractikModel.Client" Role="Client" Multiplicity="1" />
+    <End Type="AppPractikModel.History" Role="History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="IdClient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_History_Status">
+    <End Type="AppPractikModel.Status" Role="Status" Multiplicity="1" />
+    <End Type="AppPractikModel.History" Role="History" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="History">
+        <PropertyRef Name="IdStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role">
+    <End Type="AppPractikModel.Role" Role="Role" Multiplicity="1" />
+    <End Type="AppPractikModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="IdRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

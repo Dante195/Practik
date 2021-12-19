@@ -1,0 +1,40 @@
+﻿<Window x:Class="UCHEBYA.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UCHEBYA"
+        mc:Ignorable="d"
+        Title="Магазин стройматериалов HouseStrou" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="348*"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+            Background="MediumPurple" />
+        <StackPanel
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            >
+            <Image 
+                Source="/Resources/6541eb0423db0034bba69d5c55ba7524.png" />
+            <TextBlock 
+                
+                FontSize="18pt"
+                FontWeight="Bold"
+                Margin="10"
+                VerticalAlignment="Center"
+                Text="{Binding ElementName=Dante,
+                Path=Content.Title}"/>
+        </StackPanel>
+        <Frame
+            NavigationUIVisibility="Hidden"
+            Name="Dante"
+            Grid.Row="1"
+            Grid.Column="0"
+            />
+        
+    </Grid>
+</Window>

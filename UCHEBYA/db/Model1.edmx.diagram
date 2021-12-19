@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="20f096abdb124881ace905b76f5c2f84" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="AppPractikModel.Client" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="AppPractikModel.History" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="AppPractikModel.NumberProducts" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="AppPractikModel.Products" Width="1.5" PointX="0.75" PointY="5.125" />
+        <EntityTypeShape EntityType="AppPractikModel.Role" Width="1.5" PointX="5.75" PointY="5.125" />
+        <EntityTypeShape EntityType="AppPractikModel.Status" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="AppPractikModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AppPractikModel.TileProducts" Width="1.5" PointX="0.75" PointY="10.375" />
+        <EntityTypeShape EntityType="AppPractikModel.User" Width="1.5" PointX="8" PointY="4.875" />
+        <EntityTypeShape EntityType="AppPractikModel.Wallpaper" Width="1.5" PointX="0.75" PointY="13.25" />
+        <EntityTypeShape EntityType="AppPractikModel.WoodProducts" Width="1.5" PointX="0.75" PointY="7.5" />
+        <AssociationConnector Association="AppPractikModel.FK_Client_NumberProducts" />
+        <AssociationConnector Association="AppPractikModel.FK_Client_Products" />
+        <AssociationConnector Association="AppPractikModel.FK_Client_TileProducts" />
+        <AssociationConnector Association="AppPractikModel.FK_Client_Wallpaper" />
+        <AssociationConnector Association="AppPractikModel.FK_Client_WoodProducts1" />
+        <AssociationConnector Association="AppPractikModel.FK_History_Client" />
+        <AssociationConnector Association="AppPractikModel.FK_History_Status" />
+        <AssociationConnector Association="AppPractikModel.FK_User_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
